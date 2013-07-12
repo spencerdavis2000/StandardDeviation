@@ -2,49 +2,56 @@ require 'pry'
 
 class SD
 
-	attr_accessor :dataset 
+	attr_accessor :dataset, :mean, :variance_dataset, :variance, :variance_pop, :standard_deviation
 
 	def initialize(dataset)
 		@dataset = dataset
+		@mean = 0
+		@variance_dataset = []
+		@variance = 0
+		@variance_pop = 0
+		@standard_deviation = 0
 	end
 
 	#calculate the mean
-	def mean(dataset)
+	def calculate_mean
 		total = 0
-		dataset.each do |i|
+		@dataset.each do |i|
 			total = total + i
 		end
-		return total/dataset.size.to_f
+		@mean = total/@dataset.size.to_f
+		return @mean 
 	end
 
 	#calculate the variance
-	def variance_dataset(dataset, mean)
-		holder = []
-		dataset.each do |i|
-			holder << (i-mean)**2
+	def calculate_variance_dataset
+		@dataset.each do |i|
+			@variance_dataset << (i-@mean)**2
 		end
-		return holder
+		return @variance_dataset 
 	end
 
 	#calculate the standard deviation
-	def variance(variance_dataset)
+	def calculate_variance
 		total = 0
-		variance_dataset.each do |i|
+		@variance_dataset.each do |i|
 			total = total + i
 		end
-		return total/variance_dataset.size.to_f
+		@variance = total/variance_dataset.size.to_f
+		return @variance 
 	end
 
 	#calcualte the standard deviation of sample population
-	def variance_pop(variance_dataset)
+	def calculate_variance_pop
 		total = 0
-		variance_dataset.each do |i|
+		@variance_dataset.each do |i|
 			total = total + i
 		end
-		return total/((variance_dataset.size.to_f)-1)
+		@variance_pop = total/((variance_dataset.size.to_f)-1)
+		return @variance_pop 
 	end
-	def standard_deviation(dataset)
-		return Math.sqrt(dataset)
+	def calculate_standard_deviation(input)
+		return Math.sqrt(input)
 	end
 end
 
