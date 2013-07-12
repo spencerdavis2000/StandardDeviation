@@ -11,6 +11,10 @@ class SD
 		@variance = 0
 		@variance_pop = 0
 		@standard_deviation = 0
+		calculate_mean
+		calculate_variance_dataset
+		calculate_variance
+		calculate_variance_pop
 	end
 
 	#calculate the mean
