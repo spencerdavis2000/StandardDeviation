@@ -1,20 +1,20 @@
 require 'pry'
 
-class SD
+class StandardDeviation
 
 	attr_accessor :dataset, :mean, :variance_dataset, :variance, :variance_pop, :standard_deviation
 
 	def initialize(dataset)
-		@dataset = dataset
+		@dataset = dataset #The inputed set of values
 		@mean = 0
 		@variance_dataset = []
 		@variance = 0
 		@variance_pop = 0
 		@standard_deviation = 0
 		calculate_mean
-		calculate_variance_dataset
-		calculate_variance
-		calculate_variance_pop
+		calculate_variance_dataset #The calculated set of variance values based on dataset
+		calculate_variance #For regular standard deviation
+		calculate_variance_pop #For sample size standard deviation
 	end
 
 	#calculate the mean
